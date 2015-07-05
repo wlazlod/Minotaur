@@ -1,0 +1,231 @@
+\chapter{Wstêp}
+
+Rozdzia³ ten powsta³ we wspó³pracy z kol. Jakubem Pierewojem, ze wzglêdu na komplementarnoœæ obu prac - obie traktuj¹ o budowie robotów w kategorii Ketchup House - niniejsza zawiera opis konstrukcji mechanicznej i elektronicznej natomiast praca kol. Jakuba \cite{inzynierkaKuby} jego sterowanie i programowanie.
+
+\section{Robotyka mobilna}
+
+Robotyka mobilna to doœæ szczególny dzia³ robotyki, o niewyraŸnych granicach. Istnieje wiele definicji robotów mobilnych Wg E. Jezierskiego \cite{test1}, robot mobilny to kompozycja ró¿norodnych fizycznych i informatycznych sk³adników tworz¹ca 4 podstawowe podsystemy: \\
+\begin{itemize}
+	\item Ruchu (locomotion),
+	\item Detekcji (sensing),
+	\item Wnioskowania (reasoning),
+	\item Komunikacji (communication).
+\end{itemize}
+
+Natomiast wg Maji Mataric \cite{mataric}, jest to autonomiczny system, który istnieje w œwiecie fizycznym, nie jest zamocowany w jednej, ustalonej lokalizacji oraz ma mo¿liwoœæ detekcji otoczenia i dzia³ania na nim, aby osi¹gn¹æ pewne cele.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=11 cm]{zdjecia/SEEKUR.jpg}
+\caption{Robot SEEKUR – przyk³ad robota mobilnego}
+\label{fig:SEEKUR}
+\end{figure} 
+
+Niezale¿nie od przyjêtej definicji, robotyka mobilna jest bardzo szerokim i niejednorodnym dzia³em. Roboty mobilne, w zale¿noœci od œrodowiska w jakim dzia³aj¹ mo¿na podzieliæ na kilka kategorii. Wyró¿niamy roboty lataj¹ce, p³ywaj¹ce, oraz poruszaj¹ce siê na l¹dzie. 
+
+Roboty l¹dowe mo¿na podzieliæ ze wzglêdu na sposób przemieszczania. Istniej¹ mobilne roboty krocz¹ce oraz ko³owe (w tym poruszaj¹ce siê na g¹sienicach). Ka¿de z rozwi¹zañ posiada zarówno wady jak i zalety. Roboty ko³owe mog¹ rozwijaæ wiêksze prêdkoœci w porównaniu z robotami krocz¹cymi. Z kolei roboty krocz¹ce lepiej funkcjonuj¹ na nierównym pod³o¿u.
+
+\section{Robotyka amatorska}
+
+Robotyka amatorska jest doœæ szczególnym dzia³em robotyki. Jest to dziedzina zajmuj¹ca siê robotami mobilnymi, które maj¹ za zadanie konkurowaæ ze sob¹ podczas zawodów w jednej z kilku dyscyplin. Do najbardziej znanych i popularnych konkurencji mo¿na zaliczyæ m.in.:
+\begin{itemize}
+	\item Zawody Line Follower – w których roboty maj¹ za zadanie poruszaæ siê jak najszybciej po torze. Tor wyznaczany jest przez ciemn¹ liniê umieszczon¹ na jasnej planszy. Roboty s¹ startowane pojedynczo, zwyciê¿a robot, który bezb³êdnie przejedzie trasê w najkrótszym czasie. W mniej „kanonicznej” odmianie tego typu zawodów na trasie umieszczane s¹ przeszkody (np. podjazdy, kurtyny, œciany), które maj¹ utrudniæ robotom przejazd.
+	\begin{figure}[H]
+	\centering
+	\includegraphics[width=10 cm]{zdjecia/IMPACT.png}
+	\caption{Impact – przyk³ad Line Followera \cite{LF}}
+	\label{fig:IMPACT}
+	\end{figure} 
+	\item Zawody MicroMouse - w których robot, czyli "mysz" ma za zadanie w jak najkrótszym czasie rozwi¹zaæ labirynt. Klasyczny labirynt z³o¿ony jest z 256 (16x16) kwadratowych elementów o wymiarach 180x180 mm pooddzielanych miêdzy sob¹ œciankami. Rozwi¹zanie labiryntu polega na jego przeszukaniu i odnalezieniu najkrótszej œcie¿ki z kwadratu startowego (jest to jeden z naro¿ników labiryntu) do œrodka labiryntu. Wygrywa ta "mysz", która zrealizuje zadanie w najkrótszym czasie. 
+	\begin{figure}[H]
+	\centering
+	\includegraphics[width=10 cm]{zdjecia/TEZEUSZ.jpg}
+	\caption{Tezeusz – przyk³ad MicroMouse’a}
+	\label{fig:TEZEUSZ}
+	\end{figure} 
+	\item Zawody Sumo (oraz ich pochodne – MiniSumo, MicroSumo...) – w których roboty umieszczane na arenie zwanej dohyo (dod¿o), ich celem jest zlokalizowanie, zaatakowanie i zepchniêcie z maty przeciwnika. Roboty nie mog¹ zawieraæ urz¹dzeñ zak³ócaj¹cych uk³adu sterowania przeciwnika, b³yskaj¹cych œwiate³ ani urz¹dzeñ blokuj¹cych ruch. W zale¿noœci od konkurencji limitowane s¹ waga i wymiary konstrukcji (np. w MiniSumo waga nie mo¿e przekraczaæ 0,5 kg).
+	\begin{figure}[H]
+	\centering
+	\includegraphics[width=10 cm]{zdjecia/MM.png}
+	\caption{M\&M's – przyk³ady robotów MicroSumo}
+	\label{fig:MnM}
+	\end{figure} 
+	\item Zawody PuckCollect – w której roboty s¹ umieszczane na planszy, na której porozrzucano niewielkie, kolorowe kr¹¿ki (z ang. puck). Na pocz¹tku ka¿dego pojedynku, ka¿demu robotowi zostaje przydzielony kolor – czerwony lub niebieski, po czym roboty s¹ umieszczane w bazach o odpowiadaj¹cym im kolorze. Celem jest dostarczenie do bazy jak najwiêcej pucków wybranego koloru.
+	\begin{figure}[H]
+	\centering
+	\includegraphics[width=10 cm]{zdjecia/SARMATIC.png}
+	\caption{Sarmatic – przyk³ad robota kategorii PuckCollect \cite{PUCK}}
+	\label{fig:SARMATIC}
+	\end{figure} 
+\end{itemize}
+
+\section{Zawody Ketchup House}
+\subsection{Historia dyscypliny}
+
+Ketchup House (znana tak¿e jako Tomato House i V sklade keèupu) jest stosunkowo m³od¹, lecz prê¿nie rozwijaj¹c¹ siê konkurencj¹ zmagañ autonomicznych robotów mobilnych. Pierwsze zawody rozegrano w Stanach Zjednoczonych na pocz¹tku XXI wieku. Stamt¹d przywêdrowa³a do Czech i S³owacji, gdzie cieszy siê zdecydowanie najwiêksz¹ popularnoœci¹. 
+	\begin{figure}[H]
+	\centering
+	\includegraphics[width=10 cm]{zdjecia/ISTROBOT.png}
+	\caption{Zawody ISTROBOT w Bratys³awie \cite{ISTRO}}
+	\label{fig:ISTRO}
+	\end{figure} 
+	
+	Najwiêksze i ciesz¹ce siê ogromnym zainteresowaniem publicznoœci zawody to Istrobot (organizowany przez Politechnikê S³owack¹ w Bratys³awie) oraz Robotic Day (organizowane przez Uniwersytet Karola w Pradze).
+	
+	\begin{figure}[H]
+	\centering
+	\includegraphics[width=10 cm]{zdjecia/ROBOTICDAY.jpg}
+	\caption{Zawody Robotic Day w Pradze \cite{ROBOTIC}}
+	\label{fig:ISTRO}
+	\end{figure} 
+	
+	
+\subsection{Zasady rozgrywki}
+
+Ketchup House jest zdecydowanie najbardziej nieprzewidywaln¹ i widowiskow¹ konkurencj¹ odbywaj¹c¹ siê na zawodach konstruktorskich. £¹czy w sobie cechy 4 pozosta³ych kategorii rozgrywanych na tego typu imprezach (Line follower, Micro mouse, Sumo, Puck Collect).
+
+W ka¿dej, trwaj¹cej 3 minuty rozgrywce udzia³ bior¹ 2 roboty. Polem ich zmagañ jest bia³a, kwadratowa plansza o wymiarach min. 1,8x1,8m. Na planszy znajduje siê  10 czarnych linii (5 poziomych i 5 pionowych) o szerokoœci 12mm, tworz¹c kwadrat o wymiarach 1,2x1,2m, podzielony na 16 mniejszych kwadratów o wymiarach 0,3x0,3m. 
+	\begin{figure}[H]
+	\centering
+	\fbox{ \includegraphics[width=9 cm]{zdjecia/PLANSZA.png} }
+	\caption{Plansza, na której odbywaj¹ siê zawody (wymiary w mm)}
+	\label{fig:PLANSZA}
+	\end{figure} 
+
+Na skrzy¿owaniach umieszczane s¹ puszki z tytu³owym keczupem. S¹ to typowe stalowe puszki o œrednicy 53 mm, wysokoœci 74 mm i masie ok. 163 g.
+	\begin{figure}[H]
+	\centering
+	\includegraphics[width=5 cm]{zdjecia/PUSZKA.jpg}
+	\caption{Przyk³adowa puszka u¿ywana podczas zawodów}
+	\label{fig:PUSZKA}
+	\end{figure} 
+
+W ka¿dej, trwaj¹cej 3 minuty potyczce bior¹ udzia³ 2 roboty. Ich zadaniem jest przemieszczenie puszek na swoj¹ liniê „domow¹”.
+ 
+Na pocz¹tku rozgrywki na planszy znajduje siê 5 puszek. 2 z nich, zaznaczone na rys. 10 na zielono, znajduj¹ siê w ustalonych pozycjach (skrzy¿owania C2 oraz C4). Po³o¿enie 3 pozosta³ych puszek jest losowane tu¿ przed rozpoczêciem pojedynku. 
+	\begin{figure}[H]
+	\centering
+	\fbox{ \includegraphics[width=8 cm]{zdjecia/PLANSZA2.png} }
+	\caption{Plansza startowa z zaznaczonymi robotami oraz miejscami wstawiania puszek}
+	\label{fig:PLANSZA2}
+	\end{figure} 
+	
+Aby zrównowa¿yæ szanse robotów na zwyciêstwo, ka¿da z dolosowywanych puszek musi siê znaleŸæ na innej z linii B, C, D. 
+	\begin{figure}[H]
+	\centering
+	\fbox{ \includegraphics[width=8 cm]{zdjecia/PLANSZA3.png} }
+	\caption{Sytuacja na planszy po wylosowaniu pozycji B4, C3 oraz D2}
+	\label{fig:PLANSZA3}
+	\end{figure} 
+	
+Na pocz¹tku pojedynku roboty s¹ umieszczane w pozycjach A3 oraz E3. Na znak sêdziego roboty s¹ uruchamiane. Od tej pory, a¿ do zakoñczenia pojedynku nie ma mo¿liwoœci ingerencji w ich dzia³anie.
+Je¿eli podczas rozgrywki robot poruszy jedn¹ z puszek w wylosowanej pozycji, to na jej miejsce dostawiana jest kolejna. Dostawienie nastêpuje po przejechaniu przez robota do nastêpnego skrzy¿owania. W trakcie jednego pojedynku na planszy mo¿e siê pojawiæ ³¹cznie do 12 puszek. 
+
+Istnieje zupe³na dowolnoœæ w sposobie przemieszczania i odstawiania puszek. Nie ma tak¿e ograniczeñ co do sposobu poruszania siê po planszy – roboty mog¹ poruszaæ siê po wyznaczonych liniach, ale nie musz¹. Przypadkowe zderzenia na ogó³ nie s¹ karane, jednak niezgodne z zasadami jest zamierzone „d¹¿enie do zderzenia” (np. wypychanie poza planszê). Roboty powinny wykrywaæ i omijaæ przeciwnika.
+
+Po up³ywie 3 minut nastêpuje zakoñczenie potyczki. Roboty (je¿eli zachodzi taka potrzeba) s¹ zatrzymywane. Za ka¿d¹ puszkê dotykaj¹c¹ linii bazowej przyznawany jest 1 punkt. 
+	\begin{figure}[H]
+	\centering
+	\fbox{ \includegraphics[width=8 cm]{zdjecia/PLANSZA4.png} }
+	\caption{Przyk³adowa sytuacja na koniec pojedynku, zakoñczona wynikiem 5-4 na korzyœæ robota 2 (niebieskiego)}
+	\label{fig:PLANSZA4}
+	\end{figure} 
+ 
+Ca³e zawody najczêœciej prowadzone s¹ systemem grupowym (ka¿dy z ka¿dym), b¹dŸ pucharowym. W przypadku systemu grupowego sumowane s¹ punkty za iloœæ dostarczonych puszek, b¹dŸ przyznawane s¹ „du¿e” punkty za zwyciêstwo/remis – wygrywa oczywiœcie robot z najwiêksz¹ liczb¹ punktów. W rozgrywkach systemem pucharowym do nastêpnej rundy przechodzi zwyciêzca danego pojedynku. W przypadku remisu, najczêœciej dana potyczka jest powtarzana. Gdy dochodzi do notorycznego remisowania, organizatorzy wybieraj¹ zwyciêzcê pojedynku na podstawie subiektywnej oceny. \cite{KECZUP1} \cite{KECZUP2}
+\newpage
+\subsection{Ograniczenia stawiane robotom}
+
+Robotom nie s¹ stawiane tak restrykcyjne wymagania, jak w innych konkurencjach.  Robot musi byæ w pe³ni autonomiczny (nie ma mo¿liwoœci jakiejkolwiek ingerencji w jego dzia³anie podczas trwania rozgrywki, nawet w wypadku „klinczu” – wzajemnego zablokowania siê dwóch robotów).  
+
+Jedynym ograniczeniem jest jego rozmiar – jego d³ugoœæ i szerokoœæ musi byæ mniejsza ni¿ 30 cm (wysokoœæ nie jest limitowana). Roboty musz¹ mieæ przycisk na górze obudowy, pozwalaj¹cy na wy³¹czenie zasilania robota w sytuacji awaryjnej. Ponadto roboty powinny unikaæ kolizji (nie ma jednak ¿adnych restrykcyjnych norm reguluj¹cych to zagadnienie).
+ 
+	\begin{figure}[H]
+	\centering
+	\includegraphics[width=9 cm]{zdjecia/SKRZYNKA.jpg}
+	\caption{Skrzynka u¿ywana do sprawdzania, czy robot mieœci siê w wyznaczonych wymiarach.}
+	\label{fig:SKRZYNKA}
+	\end{figure} 
+
+Nie ma ¿adnych ograniczeñ w oczujnikowaniu b¹dŸ wyposa¿eniu robota.  
+
+
+\section{Roboty klasy Ketchup House}
+
+Poni¿ej umieszczono przegl¹d najciekawszych konstrukcji, bryluj¹cych na zawodach ISTROBOT oraz Robotic Day.
+
+\subsection{Veterbot}
+
+Robot Veterbot zosta³ skonstruowany przez VeterRobot-Team z Bratys³awy. Jest to du¿y (ok. 28x26 cm) oraz masywny przedstawiciel tej kategorii. Jest to robot mobilny klasy (2, 0).  Konstrukcja mechaniczna opiera siê na 2 zestawach LEGO Mindstorms NXT 2. W rzucie "z do³u" przypomina ona literê E. W dwóch pustych "komorach" ograniczonych œciankami magazynowane s¹ puszki w trakcie rozgrywki.
+	\begin{figure}[H]
+	\centering
+	\includegraphics[width=11 cm]{zdjecia/VETERBOT.png}
+	\caption{Robot VETERBOT \cite{ISTRO}}
+	\label{fig:VETERBOT}
+	\end{figure}
+	
+W robocie zastosowano trzy serwomechanizmy LEGO 9842. Dwa z nich stanowi¹ najwa¿niejsz¹ czêœæ uk³adu napêdowego robota. Bardzo ciekawym rozwi¹zaniem mechanicznym jest uk³ad przesuwu puszek. Po wykryciu obiektu, serwomechanizm poprzez przek³adniê zêbat¹ oraz czworobok przegubowy steruje dŸwigni¹ pozycjonuj¹c¹ puszkê w odpowiednim tunelu. 
+
+Jednostk¹ centraln¹ robota jest NXT Intelligent Brick – komputer zaprojektowany przez firmê LEGO. Wyposa¿ony jest on w 32-bitowy procesor ARM7, 4 wejœcia dla sensorów i 3 wyjœcia dla serwomotorów, wyœwietlacz LCD, g³oœnik i przyciski steruj¹ce. Zasilany jest przez 6 baterii AA (1.5V). Robota wyposa¿ono w trzy czujniki œwiat³a LEGO 9844 (s³u¿¹ce do wykrywania linii) oraz czujnik odleg³oœci LEGO 9846 (pozwalaj¹cy oceniæ czy puszka znajduje siê obok robota). 
+
+Dziêki wyj¹tkowej konstrukcji robota, autor móg³ wykorzystaæ interesuj¹cy algorytm. Robot, w przeciwieñstwie do wiêkszoœci konkurentów, nie odwozi puszek do linii bazowej pojedynczo lecz przez ca³¹ rozgrywkê zbiera je. Nastêpnie, przed koñcem rundy doje¿d¿a do linii bazowej i wycofuje siê, pozostawiaj¹c puszki na linii.
+
+Dziêki zastosowanym rozwi¹zaniom, praktycznie nie ma mo¿liwoœci odebrania puszek ju¿ zebranych przez tego robota. Pomimo kilku ciekawych detali, konstrukcja nie odnios³a wielu zwyciêstw. Wi¹¿e siê to g³ównie z niewielk¹ prêdkoœci¹ rozwijan¹ przez robota. Poza tym pozbawiony jest on zupe³nie sensorów mog¹cych wykryæ obecnoœæ innych robotów w pobli¿u, co w po³¹czeniu z ma³¹ mobilnoœci¹ skutkowa³o licznymi kolizjami, na ogó³ skutkuj¹cymi obopólnym zakleszczeniem.
+
+\subsection{Frankie}
+
+Robot Frankie zosta³ skonstruowany przez Dominika Fedora (Jaklovce, S³owacja). Mo¿na go sklasyfikowaæ jako robota klasy (2,0). Podobnie jak poprzednia konstrukcja, jego budowa opiera siê o popularne zestawy LEGO Mindstorms NXT. 
+	\begin{figure}[H]
+	\centering
+	\includegraphics[width=7 cm]{zdjecia/FRANKIE.png}
+	\caption{Robot Frankie \cite{ISTRO}}
+	\label{fig:FRANKIE}
+	\end{figure}
+
+W stosunku do pozosta³ych robotów jest on kompaktow¹ konstrukcj¹. Napêd zapewniaj¹ dwa zamocowane z ty³u serwomechanizmy. Rozwi¹zaniem zastosowanym do unieruchamiania puszki podczas obrotów jest ramka, napêdzana przez serwomechanizm.
+
+Jednostk¹ steruj¹c¹ jest NXT Intelligent Brick. Poza 3 serwomechanizmami zastosowano tak¿e czujnik odleg³oœci (sprawdzaj¹cy, czy puszka znajduje siê w odpowiednim miejscu) oraz 2 czujniki œwiat³a (odpowiadaj¹ce za pod¹¿anie za lini¹). Robota zaopatrzono tak¿e w dodatkowy, zewnêtrzny akumulator.
+
+Jego algorytm jazdy opiera siê na tym, ¿e puszki przez sêdziów dostawiane s¹ w te same miejsca. Po znalezieniu pierwszej puszki w pamiêci programu zapamiêtywana jest jej pozycja, a nastêpnie robot ca³y czas zmierza w to samo miejsce. Pozwala to zminimalizowaæ czas potrzebny na poszukiwanie puszki.
+ 
+Co wiêcej, algorytm zastosowany w tym robocie jest dosyæ niezawodny. Bardzo rzadko dochodzi³o do z³ego zinterpretowania sygna³ów z czujników. Umiejscowienie napêdów z ty³u, umo¿liwi³o lepsze œledzenie linii. Te wszystkie czynniki sprawi³y, ¿e ta konstrukcja bardzo dobrze radzi³a sobie w konkurencji z innymi robotami.
+
+Nie ustrzeg³a siê jednak paru istotnych wad - nie jest wyposa¿ona w ¿aden system pozycjonowania (np. magnetometr, akcelerometr itp.) przez co zupe³nie nie radzi sobie w sytuacjach nietypowych - np. podczas zderzeñ. 
+
+\subsection{ARM Tank}
+
+Robot ARM Tank zosta³ skonstruowany przez Martin Povišera (Czeskie Budziejowice, Czechy). Podobnie jak poprzednie konstrukcje, mo¿na go sklasyfikowaæ jako robota mobilnego klasy (2,0).
+	\begin{figure}[H]
+	\centering
+	\includegraphics[width=9 cm]{zdjecia/ARMTANK.png}
+	\caption{Robot ARM TANK \cite{ISTRO}}
+	\label{fig:ARMTANK}
+	\end{figure}
+	
+Jest to du¿a i masywna konstrukcja. Spoœród innych robotów w tej kategorii wyró¿nia go zastosowanie napêdu g¹siennicowego zamiast typowego napêdu ko³owego. Zastosowano w nich silniki DC z przek³adni¹ micro Pololu. Innym wyró¿nikiem jest unikatowe podejœcie do kwestii unieruchamiania puszki - zdecydowano siê na zamocowanie 3 elektromagnesów. 
+
+Jednostk¹ steruj¹c¹ robotem jest mikrokontroler STM32F107. Robot jest wyposa¿ony w 9 transoptorów odbiciowych: 7 w rozmieszczonych w linii, z przodu robota, odpowiadaj¹cych za œledzenie linii oraz 2 dodatkowe wspomagaj¹ce cofanie. Z przodu robota zamocowano ultradŸwiêkowy czujnik odleg³oœci. Dodatkowym czujnikiem jest umieszczony na swoistym wysiêgniku magnetometr, maj¹cy za zadanie pomóc w okreœlaniu orientacji robota. 
+
+Robot najpierw lokalizuje miejsce w którym znajduj¹ siê dostawiane przez organizatorów puszki. Po zebraniu  puszki robot cofa siê o jedno skrzy¿owanie, a nastêpnie podje¿d¿a ponownie w to samo miejsce i przyci¹ga kolejn¹ wolnym elektromagnesem. Po zebraniu 3 puszek robot cofa siê do linii bazowej i siê wy³¹cza.
+ 
+Pomimo zastosowania wielu niesztampowych rozwi¹zañ, robot bardzo s³abo radzi³ sobie podczas zawodów. Najwiêkszym problemem by³o wy³¹czanie siê robota po zebraniu 3 puszek - inne konstrukcje wtedy mia³y wolne pole do popisu - nic nie przeszkadza³o im w swobodnym zebraniu pozosta³ych 11 puszek. Ponadto czasami da³o siê zaobserwowaæ b³êdy podczas zakrêtów, prawdopodobnie zwi¹zane z  problemami z magnetometrem - robot zawraca³, zamiast skrêcaæ. Ponadto, elektromagnesy w jednym przypadku spowodowa³y zakleszczenie siê z innym robotem.
+
+
+\subsection{Pomidor}
+
+Robot Pomidor zosta³ skonstruowany przez cz³onków Ko³a Naukowego Robotyków przy Wydziale MEiL Politechniki Warszawskiej. By³a to pierwsza tego typu konstrukcja, zbudowana jako platforma testowa oraz wyjœcie do póŸniejszych modyfikacji. Mo¿na go sklasyfikowaæ jako robota mobilnego klasy (2, 0).
+
+	\begin{figure}[H]
+	\centering
+	\includegraphics[width=11 cm]{zdjecia/POMIDOR.png}
+	\caption{Robot Pomidor}
+	\label{fig:POMIDOR}
+	\end{figure}
+
+Jest to dosyæ du¿a, choæ lekka i szybka konstrukcja. Opiera siê na dwóch p³ytach laminatu szklano-epoksydowego, który pe³ni dwojak¹ rolê - po pierwsze stanowi podstawê robota, po drugie s¹ na niej wytrawione po³¹czenia elektryczne. P³yty te s¹ ze sob¹ po³¹czone elementami dystansuj¹cymi. W przedniej czêœci robota znajduje siê wyciêcie mog¹ce pomieœciæ trzy puszki. Ich wypadniêciu poza obrys robota zapobiega ramka, napêdzana przez serwomechanizm Dynamixel AX-12A. Napêd robota zapewniaj¹ dwa silniki Pololu z mikro przek³adni¹ 30:1, zamocowane do dolnej podstawy robota. 
+
+Jednostk¹ steruj¹c¹ robotem jest mikrokontroler STM32F100RB, umieszczony w zestawie ewaluacyjnym STM32VL. Za poprawne wykrywanie linii odpowiada 7 transoptorów odbiciowych KTIR0711S. Za wykrywanie puszek oraz przeciwników odpowiadaj¹ 3 analogowe dalmierze SHARP GP2Y0A41SK0F. Aby zapewniæ mo¿liwoœæ orientacji na planszy zastosowano w nim enkodery inkrementalne, dzia³aj¹ce z wykorzystaniem transoptorach odbciowych. Robota wyposa¿ono tak¿e w modu³ Bluetooth pozwalaj¹cy na komunikacjê z komputerem (w celu debugowania b¹dŸ monitorowania postêpów).
+
+Algorytm robota steruje robotem tak, aby odwiedza³ on kolejno skrzy¿owania D3 D5 C5 C1 B1 B5 A5 A1 D1 D3 (i tak dalej). W chwili znalezienia puszki (odczytania odpowiednio wysokiego wskazania na dalmierzach SHARP) robot zamyka ramkê tak, aby uniemo¿liwiæ utratê kontaktu z puszk¹ np. przy zakrêtach lub przy cofaniu. Nastêpnie, znajduje skrzy¿owanie na swojej linii bazowej, na którym nie ma puszki (lub na którym najdawniej odstawi³ puszkê) i odwozi puszkê na to skrzy¿owanie. Po zakoñczeniu tej procedury, algorytm kontynuuje odwiedzanie kolejnych skrzy¿owañ. Taki cykl powtarza siê, a¿ do zakoñczenia rundy. 
+
+Pomimo zastosowania du¿ej iloœci czujników, bardzo du¿ej szybkoœci dzia³ania oraz interesuj¹cego algorytmu, robot zaj¹³ na zawodach ISTROBOT dopiero czwarte miejsce. Dzia³o siê tak z powodu nieskutecznego rozpoznawania robota przeciwnika oraz niedostosowania konstrukcji do mo¿liwoœci zderzenia siê z innymi robotami.
+	 
