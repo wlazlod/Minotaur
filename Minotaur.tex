@@ -1,8 +1,8 @@
 \documentclass[12pt,oneside,a4paper]{report}
 \usepackage[OT4]{polski}
 \usepackage[cp1250]{inputenc}
-\usepackage{geometry}
 \usepackage{latexsym}
+\usepackage{geometry}
 \usepackage{graphicx}
 \usepackage{float}
 \usepackage{indentfirst}
@@ -12,10 +12,7 @@
 \usepackage{sidecap} % paczka do wstawiania opisów zdjêæ
 \usepackage{wrapfig} % paczka do op³ywania zdjêæ
 \usepackage{pdfpages}
-\usepackage{listings}
-\usepackage{mathrsfs}
 %\usepackage{verbatim}
-\lstset{language=Matlab}
 
 
 
@@ -28,11 +25,11 @@ footskip=15mm}
 
 \input{my_config}
 
-\author{in¿. Daniel Wlaz³o \\ in¿. Marek Ogonowski}
-\album{244123}
+\author{Daniel Wlaz³o, Marek Ogonowski}
 \kierunek{Automatyka i Robotyka}
 \specjalnosc{Robotyka}
-\title{Minotaur - Robot klasy Micromouse}
+\promotor{dr in¿. Andrzej Chmielniak}
+\title{Projekt budowa oraz oprogramowanie robota klasy micromouse}
 \place{Warszawa}
 
 \begin{document}
@@ -43,8 +40,13 @@ footskip=15mm}
 \tableofcontents 
 	
 \linespread{1.3} 	
-\input{zadanie.tex}
 \input{wstep.tex}
+\input{mechanika.tex}
+\input{elektronika.tex}
+\input{sensory.tex}
+\input{algorytm.tex}
+\input{implementacja.tex}
+\input{testowanie.tex}
 \input{wnioski.tex}
 
 
